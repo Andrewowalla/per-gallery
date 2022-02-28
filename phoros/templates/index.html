@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 {{block.super}}
+<div class="container">
+
+    <!-- Looping through Images   -->
+    {% for image in images %}
+  
+    <div class="row">
+      <!-- displaying images -->
+      <div class="modal-body">
+        <p>Name:{{image.image_name}}</p>
+        <p >Location:{{image.image_location}}</p>
+        <p >Category:{{image.image_category}}</p>
+
+        <p>Description:{{image.image_description}}</p>
+      </div>
+  
+    </div>
+    {% endfor %}
+  
+</div>
+
 {% endblock %}
