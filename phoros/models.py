@@ -6,8 +6,14 @@ from cloudinary.models import CloudinaryField
 class Location(models.Model):
     name = models.CharField(max_length=100)
 
+    def __string__(self):
+        return self.name
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
+
+    def __string__(self):
+        return self.name
 
 class Image(models.Model):
     image = CloudinaryField('image')
