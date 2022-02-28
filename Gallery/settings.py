@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phoros.apps.PhorosConfig'
+    'phoros.apps.PhorosConfig',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -77,8 +81,10 @@ WSGI_APPLICATION = 'Gallery.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'gallery',
+        'USER': 'andrewowalla',
+    'PASSWORD':'db_password',
     }
 }
 
@@ -107,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -126,3 +132,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# adding config
+cloudinary.config( 
+  cloud_name = "do7r1eyot", 
+  api_key = "144923558388227", 
+  api_secret = "AFH8bfLeUoHm5GieD-I1O_Z-Hes" 
+)
