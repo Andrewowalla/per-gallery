@@ -1,25 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 {{block.super}}
+{% load static%}
+  <link rel="stylesheet" href="{% static 'css/basephoros.css' %}">
 <div class="container">
 
     <!-- Looping through Images   -->
+  <div class="row" >
     {% for image in image %}
-  <div class="row">
-    <div class ="card">
-      <!-- displaying images -->
-      <div class="modal-body">
-        <p>Name:{{image.image_name}}</p>
-        <p >Location:{{image.image_location}}</p>
-        <p >Category:{{image.image_category}}</p>
-        <img src="{{image.image.url}}" alt="{{image.image_name}}" width="25%" class="img-fluid">
+    
+      <div class="col-sm-4 ">
+        <div class ="card ">
+          <!-- displaying images -->
+          <div class="card-body ca">
+            <img src="{{image.image.url}}" alt="{{image.image_name}}" width="50%" class="img-fluid">
+            <p>Name:{{image.image_name}}</p>
+            <p >Location:{{image.image_location}}</p>
+            <p >Category:{{image.image_category}}</p>
 
-        <p>Description:{{image.image_description}}</p>
+            <p>Description:{{image.image_description}}</p>
+          </div>
+        </div>
       </div>
-  
-    </div>
-  </div>
+    
     {% endfor %}
+  </div>
   
 </div>
 
