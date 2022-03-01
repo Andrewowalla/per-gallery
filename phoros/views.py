@@ -2,6 +2,7 @@ from email.mime import image
 from unicodedata import category
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http.response import Http404
 import datetime as dt
 
 from phoros.models import Location, Category, Image
@@ -25,3 +26,10 @@ def search_results(request):
   else:
     message = "Please input a valid term"
     return render(request,'search.html', {'message':message})
+
+def get_image_by_id(request,image_id):
+  try:
+    image= Image.objects.get(id=image_id)
+  except:
+    raise Http404()  
+  return render(request,'display.html',{'image':image})
