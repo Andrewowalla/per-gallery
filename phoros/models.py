@@ -13,7 +13,7 @@ class Location(models.Model):
     def delete_location(self):
         self.delete() 
 
-    def __string__(self):
+    def __str__(self):
         return self.name
 
 class Category(models.Model):
@@ -25,7 +25,7 @@ class Category(models.Model):
     def delete_category(self):
         self.delete()
 
-    def __string__(self):
+    def __str__(self):
         return self.name
 
 class tags(models.Model):
@@ -41,10 +41,7 @@ class Image(models.Model):
     tags = models.ManyToManyField(tags)
     image_location = models.ForeignKey(Location, on_delete=models.CASCADE)
     image_category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = 'images/')
 
-    def __str__(self):
-        return self.image
 
     def save_image(self):
         self.save()
