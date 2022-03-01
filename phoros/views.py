@@ -15,17 +15,25 @@ def index(request):
     
     return render(request, 'index.html', {"loaction":location, "category":category, "image":image})
 
+def category(request,category):
+
+    category = Category.objects.all()
+    image=Image.objects.filter(category=category)
+
+    return render(request,'category.html',{"category":category, "image":image})
+
 def search_results(request):
   
-  if 'image' in request.GET and request.GET["image"]:
-    search_term = request.GET.get("image")
+  if 'category' in request.GET and request.GET["category"]:
+    search_term = request.GET.get("category")
     searched_images = Image.search_by_category(search_term)
     message = f"{search_term}"
     
-    return render(request,"search.html", {'message':message,'images':searched_images})
+    return render(request,"search.html", {'message':message,'category':searched_images})
   else:
-    message = "Please input a valid term"
+    message = "Please input a valid category"
     return render(request,'search.html', {'message':message})
+
 
 def get_image_by_id(request,image_id):
   try:

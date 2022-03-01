@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     {%if images%}
-    <h2>Found {{images|length}} of searched term {{message}}</h2>
+    <h2>Found {{images|length}} of searched category {{message}}</h2>
 
       {%for image in image %}
         <div class="col-md-4">
@@ -14,7 +14,7 @@
 
 
     {%else%}
-    <h2>Found 0 images for search term {{message}}</h2>
+    <h2>Found 0 images for search category {{message}}</h2>
     {%endif%}
   </div>
 
