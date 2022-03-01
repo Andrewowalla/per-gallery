@@ -33,3 +33,9 @@ def get_image_by_id(request,image_id):
   except:
     raise Http404()  
   return render(request,'display.html',{'image':image})
+
+def filter_by_location(request,location):
+  image= Image.filter_by_location(location)
+  
+  
+  return render(request,'location.html',{'images':image})
