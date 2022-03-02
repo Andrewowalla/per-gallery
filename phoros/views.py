@@ -15,6 +15,11 @@ def index(request):
     
     return render(request, 'index.html', {"loaction":location, "category":category, "image":image})
 
+def location(request,location):
+    image=Image.objects.filter(location=location)
+
+    return render(request,'location.html',{"image":image})
+
 def category(request,category):
 
     category = Category.objects.all()
@@ -26,10 +31,10 @@ def search_results(request):
   
   if 'category' in request.GET and request.GET["category"]:
     search_term = request.GET.get("category")
-    searched_images = Image.search_by_category(search_term)
+    searched_category = Category.search_by_category(search_term)
     message = f"{search_term}"
     
-    return render(request,"search.html", {'message':message,'category':searched_images})
+    return render(request,"search.html", {'message':message,'category':searched_category})
   else:
     message = "Please input a valid category"
     return render(request,'search.html', {'message':message})
@@ -45,4 +50,4 @@ def get_image_by_id(request,image_id):
 def filter_by_location(request,location):
   image= Image.filter_by_location(location)
   
-  return render(request,'location.html',{'images':image})
+  return render(request,'location.html',{'image':image})

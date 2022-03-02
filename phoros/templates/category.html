@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+ {% block content %}
+
+  <div class="container">
+  <body style="background-color:#B5C9F3">
+
+    <div class="row">
+        {% for category in category %}
+          <div class="col-sm-4">
+            <h1 class="text-center">{{image.category.name}}
+          </div>
+        {% endfor %}
+    </div>
+    {% if image|length > 0 %}
+        {% for image in image %}
+        <div class="col">
+          <div class="card shadow-sm">
+
+            <img src="{{image.landImage.url}}" alt="{{image.altText}}">
+
+            <div class="card-body">
+              <p class="card-text">{{image.image_description}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2>No Images Uploaded for this category</h2>
+        {% endif %}
+ </body>
+ </div>
+{% endblock %}

@@ -5,12 +5,17 @@
   <link rel="stylesheet" href="{% static 'css/basephoros.css' %}">
 <div class="container">
 
+  <div class="intro">
+    <h2 class="text-center">Gallery</h2>
+    <p class="text-center">Images that are available</p>
+  </div>
+
     <!-- Looping through Images   -->
   <div class="row" >
     {% for image in image %}
     
     <div class="col-md-3">
-      <img src="{{image.image.url}}" class="img-thumbnail" data-toggle="modal" data-target="#modalQuickView{{image.id}}">
+      <img src="{{image.image.url}}" class="img-thumbnail" width="100%" data-toggle="modal" data-target="#modalQuickView{{image.id}}">
       <!-- Modal: modalQuickView -->
       <div class="modal fade" id="modalQuickView{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

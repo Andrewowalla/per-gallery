@@ -7,12 +7,12 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-          <a class="nav-link" href="{% url 'category' %}">Category</a>
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          <a class="nav-link" href="/#category">Category</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Location</a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            {%for image in location%}
-            <a class="dropdown-item" href="/images/{{image.name}}">{{image.image_name}}</a>
+            {%for location in location%}
+            <a class="dropdown-item" href="/location/{{location.name}}">{{location.name}}</a>
             {%endfor%}
           </div>
         </div>
